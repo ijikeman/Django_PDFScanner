@@ -2,7 +2,7 @@ import os
 from django.shortcuts import render, redirect
 from .forms import PDFUploadForm
 from .models import PDFDocument
-from modules import PdfReader
+from modules import PdfReader, TextReplacers, ConvertToCsv
 
 def upload_pdf(request):
     if request.method == 'POST':
