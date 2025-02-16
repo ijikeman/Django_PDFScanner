@@ -1,2 +1,5 @@
 django
 PyPDF2
+pdfplumber
+pytesseract
+pdf2image
