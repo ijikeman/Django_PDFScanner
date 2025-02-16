@@ -1,0 +1,32 @@
+# Python関連
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# 環境変数・シークレット情報
+.env
+*.ini
+*.cfg
+
+# 仮想環境（venv, virtualenv）
+venv/
+
+# Django関連
+db.sqlite3
+## アップロードされたメディアファイル
+media/
+## collectstatic で生成された静的ファイル
+staticfiles/
+
+# Djangoマイグレーションキャッシュ
+*/migrations/*.pyc
+*/migrations/__pycache__/
+## 初回のマイグレーションファイルも除外可
+*0001_initial.py
+
