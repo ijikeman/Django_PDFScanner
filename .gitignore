@@ -27,6 +27,6 @@ staticfiles/
 # Djangoマイグレーションキャッシュ
 */migrations/*.pyc
 */migrations/__pycache__/
-## 初回のマイグレーションファイルも除外可
-*0001_initial.py
+# 初回のマイグレーションファイルも除外可
+#*0001_initial.py
 
