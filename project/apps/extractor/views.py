@@ -2,7 +2,6 @@ import os
 from django.shortcuts import render, redirect
 from .forms import PDFUploadForm
 from .models import PDFDocument
-import PyPDF2
 from modules import PdfReader
 
 def upload_pdf(request):
