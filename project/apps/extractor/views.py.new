@@ -1,0 +1,27 @@
+import os
+from django.shortcuts import render, redirect
+from .forms import PDFUploadForm
+from .models import PDFDocument
+import PyPDF2
+from modules import PdfReader
+
+def extract_text_from_pdf(pdf_path):
+    text = ""
+    with open(pdf_path, "rb") as f:
+        reader = PyPDF2.PdfReader(f)
+        for page in reader.pages:
+            text += page.extract_text() or ""
+    return text
+
+def upload_pdf(request):
+    if request.method == 'POST':
+        form = PDFUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            pdf_instance = form.save()
+            #text = extract_text_from_pdf(pdf_instance.file.path)
+            reader = PdfReader(pdf_instance.file.path, [1]) # PdfReaderを使うように改変
+            text = reader.pdfplumber()
+            return render(request, 'extractor/result.html', {'text': text})
+    else:
+        form = PDFUploadForm()
+    return render(request, 'extractor/upload.html', {'form': form})

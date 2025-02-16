@@ -1,2 +1,2 @@
-#from .modules.PdfReader import PdfReader
-from .modules.PDFExtractor import PDFExtractor
+from .PdfReader import PdfReader
+from .PDFExtractor import PDFExtractor
