@@ -18,6 +18,7 @@ def upload_pdf(request):
             replacers = TextReplacers()
             replacers.add('－', '-')
             replacers.add('△', '-')
+            replacers.add('※', '')
             replacers.add(',', '')
             replacers.add(',', '')
             replacers.add(' ', ',')
