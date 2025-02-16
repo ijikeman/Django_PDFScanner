@@ -15,6 +15,13 @@ def upload_pdf(request):
             print("Extracted page_numbers:", page_numbers)  # デバッグ用
             reader = PdfReader(pdf_instance.file.path, page_numbers) # PdfReaderを使うように改変
             text = reader.pdfplumber()
+            replacers = TextReplacers()
+            replacers.add('－', '-')
+            replacers.add('△', '-')
+            replacers.add(',', '')
+            replacers.add(',', '')
+            replacers.add(' ', ',')
+            text = replacers.replace_all(text)
             return render(request, 'extractor/result.html', {'text': text})
         else:
             print("Form errors:", form.errors)  # ここでエラー内容を確認！
