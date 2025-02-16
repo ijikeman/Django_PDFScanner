@@ -16,10 +16,16 @@ def extract_text_from_pdf(pdf_path):
 def upload_pdf(request):
     if request.method == 'POST':
         form = PDFUploadForm(request.POST, request.FILES)
+        page_numbers_str = form.cleaned_data.get('page_numbers', '')  # ページ番号の文字列を取得
+        # カンマ区切りでページ番号をリストに変換
+        try:
+            page_numbers = [int(num.strip()) for num in page_numbers_str.split(",") if num.strip().isdigit()]
+        except ValueError:
+            page_numbers = []
+
         if form.is_valid():
             pdf_instance = form.save()
-            #text = extract_text_from_pdf(pdf_instance.file.path)
-            reader = PdfReader(pdf_instance.file.path, [1]) # PdfReaderを使うように改変
+            reader = PdfReader(pdf_instance.file.path, page_numbers) # PdfReaderを使うように改変
             text = reader.pdfplumber()
             return render(request, 'extractor/result.html', {'text': text})
     else:
