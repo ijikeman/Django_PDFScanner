@@ -1,9 +1,8 @@
 {
-    "name": "Django Application",
-    "build": {
-        "dockerfile": "Dockerfile",
-    },
-    "mounts": [ // dockerマウント設定 /workspace/にマウントする(default)
-        "source=${localWorkspaceFolder}/,target=/workspace/,type=bind,consistency=delegated"
-    ],
+	"name": "Existing Docker Compose",
+	"dockerComposeFile": [
+		"../compose.yml"
+	],
+	"service": "django",
+	"workspaceFolder": "/workspace/"
 }

@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "apps.extractor", # Add App
+    "myapps", # Add App
+#    "apps.extractor", # Add App
 ]
 
 MIDDLEWARE = [
@@ -75,9 +76,17 @@ WSGI_APPLICATION = "project.wsgi.application"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    # "default": {
+    #     "ENGINE": "django.db.backends.sqlite3",
+    #     "NAME": BASE_DIR / "db.sqlite3",
+    # }
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django_db',
+        'USER': 'django_user',
+        'PASSWORD': 'django_password',
+        'HOST': 'mysql',
+        'PORT': '3306',
     }
 }
 

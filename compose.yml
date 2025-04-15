@@ -1,0 +1,16 @@
+---
+services:
+  django:
+    container_name: django
+    build: ./django_container/
+    volumes:
+      - .:/workspace:cached
+    command: /bin/sh -c "while sleep 1000; do :; done"
+  mysql:
+    container_name: mysql
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: hogehoge
+      MYSQL_DATABASE: django_db
+      MYSQL_USER: django_user
+      MYSQL_PASSWORD: django_password
