@@ -4,5 +4,6 @@
 		"../compose.yml"
 	],
 	"service": "django",
-	"workspaceFolder": "/workspace/"
+	"workspaceFolder": "/workspace/",
+	"forwardPorts": [8000]
 }
