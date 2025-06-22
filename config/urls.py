@@ -19,4 +19,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('upload/', include('document_upload.urls')), # uploadにアクセスするとdocument_uploadアプリのurls.pyを参照
 ]
