@@ -7,8 +7,8 @@ def upload_document(request):
         form = DocumentForm(request.POST, request.FILES) # form.pyのDocumentFormを使用
         if form.is_valid(): # Validate the form
             form.save() # save the uploaded file
-            return render(request, 'document_upload/upload.html', {'form': form})
+            return render(request, 'upload.html', {'form': form})
     # Get Method: Display the upload form
     else:
-        form = DocumentForm()
-    return render(request, 'document_upload/upload.html', {'form': form})
+        form = DocumentForm() # form.pyのDocumentFormを使用
+    return render(request, 'document_upload/upload.html', {'form': form}) # /templates/document_upload/upload.htmlを表示
