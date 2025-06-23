@@ -7,9 +7,9 @@
     <h1>決算短信アップローダー</h1>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.name.as_p }}
-    {{ form.file.as_p }}
-    {{ form.page_numbers.as_p }}
+    <p>{{ form.name.label }}: {{ form.name }}</p>
+    <p>{{ form.file.label }}: {{ form.file }}</p>
+    <p>{{ form.page_numbers.label }}: {{ form.page_numbers }}</p>
     <button type="submit">アップロード</button>
 </form>
 </body>

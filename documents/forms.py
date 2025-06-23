@@ -13,7 +13,9 @@ class DocumentForm(forms.ModelForm):
         }
 
     def clean_page_numbers(self):
-        page_numbers_str = self.cleaned_data['page_numbers']
+        page_numbers_str = self.cleaned_data.get('page_numbers')
+        if not page_numbers_str:
+            return []
         try:
             if '-' in page_numbers_str:
                 start, end = map(int, page_numbers_str.split('-'))
