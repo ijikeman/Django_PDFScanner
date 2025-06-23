@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import DocumentForm
 import os
 
-def upload_document(request):
+def upload(request):
     # Post Method: Handle file upload
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES) # form.pyのDocumentFormを使用
@@ -12,9 +12,9 @@ def upload_document(request):
     # Get Method: Display the upload form
     else:
         form = DocumentForm() # form.pyのDocumentFormを使用
-    return render(request, 'document_upload/upload.html', {'form': form}) # /templates/document_upload/upload.htmlを表示
+    return render(request, 'documents/upload.html', {'form': form}) # /templates/document_upload/upload.htmlを表示
 
-def list_documents(request):
+def list(request):
     documents_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'documents')
     files = os.listdir(documents_dir)
-    return render(request, 'document_upload/document_list.html', {'files': files})
+    return render(request, 'documents/list.html', {'files': files})
