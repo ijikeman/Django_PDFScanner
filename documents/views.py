@@ -15,6 +15,15 @@ def upload(request):
     return render(request, 'documents/upload.html', {'form': form}) # /templates/document_upload/upload.htmlを表示
 
 def list(request):
-    documents_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'upload_files')
-    files = os.listdir(documents_dir)
-    return render(request, 'documents/list.html', {'files': files})
+    documents = Document.objects.all()
+    form = DocumentDeleteForm()
+    if request.method == 'POST':
+        selected_documents = request.POST.getlist('delete_documents')
+        for doc_id in selected_documents:
+            try:
+                document = Document.objects.get(pk=doc_id)
+                document.delete()
+            except Document.DoesNotExist:
+                pass  # Handle the case where the document doesn't exist
+        return redirect('documents:list')  # Redirect to the list view
+    return render(request, 'documents/list.html', {'documents': documents, 'form': form})
