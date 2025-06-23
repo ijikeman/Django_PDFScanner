@@ -20,5 +20,4 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('documents/', include('documents.urls')), # upload/にアクセスするとdocument_uploadアプリのurls.pyを参照
-    path('')
 ]
