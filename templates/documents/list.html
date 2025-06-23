@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document List</title>
+</head>
+<body>
+    <h1>Documents</h1>
+    <form method="post">
+        {% csrf_token %}
+        <ul>
+            {% for document in documents %}
+                <li>
+                    <input type="checkbox" name="delete" value="{{ document.id }}">
+                    {{ document.name }} ({{ document.file.name }})
+                </li>
+            {% endfor %}
+        </ul>
+        <button type="submit">Delete Selected Documents</button>
+    </form>
+</body>
+</html>

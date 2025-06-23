@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-n!wwfej4$+dwcimtcl_62f%l#9a%m7^_+z)!8sv26j(yzc_vkp
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Add
-    'document_upload',
+    'documents',
 ]
 
 MIDDLEWARE = [
