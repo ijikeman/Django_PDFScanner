@@ -11,6 +11,12 @@ class DocumentForm(forms.ModelForm):
             'file': 'ファイル',
         }
 
+    def clean_file(self):
+        file = self.cleaned_data['file']
+        if file.name.split('.')[-1].lower() != 'pdf':
+            raise ValidationError('PDFファイルのみアップロードできます。')
+        return file
+
 class DocumentDeleteForm(forms.Form):
     name = forms.CharField(label='ファイル名')
 
