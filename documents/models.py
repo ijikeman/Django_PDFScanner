@@ -6,3 +6,8 @@ class Document(models.Model):
 
     def __str__(self):
         return self.name
+
+    # deleteメソッドをオーバーライドして、実際のファイルを削除するようにした
+    def delete(self):
+        self.file.delete()
+        super().delete()
