@@ -8,7 +8,11 @@ def upload(request):
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES) # form.pyのDocumentFormを使用
         if form.is_valid(): # Validate the form
+            page_numbers = form.cleaned_data['page_numbers']
+            # TODO: Process the document with the specified page numbers using pdfplumber
             form.save() # models.pyでDocumentが定義されているため、save()メソッドで./upload_files/に保存される
+            return redirect('document_list')
+        else:
             return render(request, 'documents/upload.html', {'form': form})
 
     # Get Method: Display the upload form
